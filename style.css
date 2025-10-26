@@ -48,4 +48,24 @@
             main #album #photo img {
                 width: 400px;
             }
-            
+            /* --- Page 4: Photo gallery --- */
+.photo-gallery{
+  list-style:none;
+  padding:0;
+  margin:16px 0 32px;
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap:16px;
+}
+.photo-gallery .photo{
+  background:#fff;
+  border:1px solid #e6e9ef;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
+}
+.photo-gallery img{
+  display:block;
+  width:100%;
+  height:auto;          /* keeps aspect ratio */
+}

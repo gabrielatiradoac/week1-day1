@@ -1,31 +1,72 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>My Third Web Page</title>
-    <link rel="stylesheet" href="style.css">
-    <img src="images/central_park.jpg" alt="Central Park" width="600" height="400">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Fourth Page</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-    <!-- Main Navigation -->   
+<body id="page4">
+  <header>
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="page2.html">About</a></li>
-            <li> <a href="page4.html">Gallery</a></li>
-            <li><a href="page3.html">Contact</a></li>
-        </ul>
-    </nav> <!-- End of Main Navigation --> 
-<main>
-    <h1>My Fourth Heading</h1>
-    <p>My Fourth Paragraph</p>
-<ul id="album">
-    <li id="photo"><img src="images/winterland1.jpg"></li>
-    <li id="photo"><img src="images/winterland2.jpg"></li>
-    <li id="photo"><img src="images/winterland3.jpg"></li>
-    <li id="photo"><img src="images/winterland4.jpg"></li>
-    <li id="photo"><img src="images/winterland5.jpg"></li>
-    <li id="photo"><img src="images/winterland6.jpg"></li>
+      <a href="index.html">Home</a>
+      <a href="page2.html">Page 2</a>
+      <a href="page3.html">Page 3</a>
+      <a href="page4.html">Page 4</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>My Fourth heading</h1>
+    <p>My Fourth paragraph</p>
+
+    <!-- GALLERY (hard-coded first, then we will deactivate it later) -->
+<!-- Deactivated hard-coded gallery for JS step:
+<ul id="photoGallery" class="photo-gallery">
+  <li class="photo"><img src="images/winterland1.jpg" alt="Winterland 1"></li>
+  <li class="photo"><img src="images/winterland2.jpg" alt="Winterland 2"></li>
+  <li class="photo"><img src="images/winterland3.jpg" alt="Winterland 3"></li>
+  <li class="photo"><img src="images/winterland4.jpg" alt="Winterland 4"></li>
+  <li class="photo"><img src="images/winterland5.jpg" alt="Winterland 5"></li>
+  <li class="photo"><img src="images/winterland6.jpg" alt="Winterland 6"></li>
 </ul>
+-->
 
+<!-- Empty gallery container to be populated by JS -->
+<ul id="photoGallery" class="photo-gallery"></ul>
+  </main>
 
-</main>
+  <footer>
+    <p>&copy; 2025</p>
+  </footer>
+  <script>
+// Arrays & variables
+const count = 6;
+const fileNames = [];   // e.g., ["winterland1", "winterland2", ...]
+const photos = [];      // e.g., ['<img src="images/winterland1.jpg" alt="Winterland 1">', ...]
+const items  = [];      // e.g., ['<li class="photo">...</li>', ...]
+
+// 1) create filenames winterland1..winterland6
+for(let i=1; i<=count; i++){
+  fileNames.push(`winterland${i}`);
+}
+
+// 2) assemble <img> elements and push into photos[]
+for(let i=0; i<fileNames.length; i++){
+  const img = `<img src="images/${fileNames[i]}.jpg" alt="Winterland ${i+1}">`;
+  photos.push(img);
+}
+
+// 3) wrap each photo in <li class="photo">..</li>, push into items[]
+for(let i=0; i<photos.length; i++){
+  const li = `<li class="photo">${photos[i]}</li>`;
+  items.push(li);
+}
+
+// 4) dump the assembled list items into the UL
+const gallery = document.getElementById('photoGallery');
+gallery.innerHTML = items.join('');
+</script>
+
+</body>
 </html>
